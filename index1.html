@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer - Ahmad Hafizh Dhia </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #ff6666, #ff0000, #b30000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-link {
+            position: relative;
+        }
+        #home {
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+            #home::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255, 77, 77, 0.2) 1px, transparent 1px);
+                background-size: 40px 40px;
+                animation: moveStars 25s linear infinite;
+                z-index: -1;
+            }
+
+            @keyframes moveStars {
+                0% {
+                    transform: translate(0, 0);
+                }
+                100% {
+                    transform: translate(40px, 40px);
+                }
+            }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6; }
+        }
+    
+.star {
+    position: absolute;
+    top: -10px;
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 70, 70, 0.95), transparent);
+    animation: fall linear infinite;
+    opacity: 1;
+    z-index: -1;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(120vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+    animation: float 10s linear infinite;
+    z-index: -2;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0px) translateX(0px);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) translateX(20vw);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">Hafizh</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-500 transition">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-500 transition">About</a>
+                    <a href="#works" class="nav-link text-gray-700 hover:text-blue-500 transition">Works</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-500 transition">Skills</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white pb-3 px-4">
+            <div class="space-y-1">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-blue-500">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-500">About</a>
+                <a href="#works" class="block py-2 text-gray-700 hover:text-blue-500">Works</a>
+                <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-500">Skills</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden z-0"> 
+        <div class="flex flex-col md:flex-row items-center text-center md:text-left">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-text">Web Developer</span><br>
+                    Ahmad Hafizh Dhia
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 typewriter">Web Developer pemula dengan segala ide unik nya</p>
+                <div class="flex space-x-4">
+                    <a href="#works" class="w-full md:w-auto text-sm bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition shadow-md">View My Works</a>
+                    <a href="#contact" class="w-full md:w-auto text-sm border-2 border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full absolute -z-10 top-4 left-4"></div>
+                    <img src="Hafizh.jpeg" class="w-full max-w-xs sm:max-w-sm md:max-w-md object-cover rounded-full border-[6px] border-white shadow-2xl">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center text-center md:text-left">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                   <img src="Hafizh.jpeg" 
+     alt="Profile" 
+     class="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover object-top rounded-xl border-[6px] border-white shadow-xl">
+
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Second Year Vocational School Student</h3>
+                    <p class="text-gray-600 mb-6">I'm just an ordinary student who has the desire to become a software engineer and also I want to try to be a freelancer, the point is I have a vision and mission to be as productive as possible and become a super rich and smart person</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold mb-2">Web Developer</h4>
+                        <p class="text-gray-600">started coding from the beginning of entering vocational school where I was for about 1 year, starting with web developer I was still a beginner and now I have started learning PHP for just a few month</p>
+                    </div>
+                    
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center">
+                            <i class="fas fa-tv mr-1"></i> Web Developer
+                        </span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm flex items-center">
+                            <i class="fas fa-coffee mr-1"></i> Milk Addict
+                        </span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm flex items-center">
+                            <i class="fas fa-gamepad mr-1"></i> Gamer
+                        </span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm flex items-center">
+                            <i class="fa-solid fa-dumbbell mr-1"></i> Sport Addict
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-4">My Works</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">several collections of projects, both school assignments and own projects</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 card-hover">
+                    <img src="Screenshot 2025-08-05 093803.png" alt="Crud sederhana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold mb-2">Crud sederhana</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">0 ★</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Crud laravel sederhana yang di mana bisa untuk register, login , post sesuatu dan juga bisa untuk di edit dan delete.</p>
+                        <a href="https://github.com/gfizh/SimpleCrud-PKL" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                            View More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 card-hover">
+                    <img src="Screenshot 2025-08-05 094209.png" alt="Jam Digital" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold mb-2">Jam Digital</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">0 ★</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Jam digital sederhana yang berjalan secara real time </p>
+                        <a href="https://github.com/gfizh/JamDigital" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                            View More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 card-hover">
+                    <img src="Screenshot 2025-08-05 094657.png" alt="News Title Classification" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold mb-2">Simple Responsive Web</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">0 ★</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Projek pertama dan juga pertama kali menggunakan github untuk berkolaborasi, Simple web berisi tentang informasi hewan.</p>
+                        <a href="https://github.com/mantapok1/Tugas_KLMPK" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                            View More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/gfizh?tab=repositories" class="inline-block bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium transition shadow-md">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">My Skills</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Some tools and skills that I have mastered and can use to maximize my project</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Skill 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Game Dev</h3>
+                    <p class="text-gray-500 text-sm mb-4">3 month Experience</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Unity, Roblox Studio/span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>C#, Lua
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-purple-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+                    <p class="text-gray-500 text-sm mb-4">1 Years Experience</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>HTML, CSS, JS</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>PHP, Laravel, </span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>MySQL</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-green-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Software</h3>
+                    <p class="text-gray-500 text-sm mb-4">8 month Experience</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Windows</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Photoshop, Canva</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Git, Github</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-keyboard text-yellow-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Programming Languages</h3>
+                    <p class="text-gray-500 text-sm mb-4">5 Month Experience</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>PHP</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>JavaScript</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Experienced As</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">My journey through various roles in the digital and creative world.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Experience 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-brands fa-ubuntu text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Web developer</h3>
+                    <p class="text-gray-600 mb-4">create and create various kinds of simple and useful websites</p>
+                    <span class="text-sm text-gray-500">2024 - Present</span>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-gamepad" text-purple-500 text-xl></i>
+                    </div>  
+                    <h3 class="text-xl font-semibold mb-2">Game Developer</h3>
+                    <p class="text-gray-600 mb-4">having experience making games in groups with unity and roblox studio</p>
+                    <span class="text-sm text-gray-500">2025 - Present</span>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-hand-fist" text-green-500 text-xl></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Athlete</h3>
+                    <p class="text-gray-600 mb-4">Im an Athlete of tarung derajat <a href="https://mis.my.id/" class="text-blue-500"></a></p>
+                    <span class="text-sm text-gray-500">2024 - 2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-4">Contact Me</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">If you want to collaborate or give feedback, contact me below.</p>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/3">
+                    <h3 class="text-xl font-semibold mb-6">Get in Touch</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <a href="mailto:ahmadhafizh960@gmail.com" class="text-gray-600 hover:text-blue-500">ahmadhafizh960@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-600">Depok, Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-green-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">School</h4>
+                                <p class="text-gray-600">SMK Plus Pelita Nusantara</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-tv text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Favorite Music</h4>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="bg-blue-100 text-red-800 px-2 py-1 rounded-full text-xs">Starboy</span>
+                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Glimpse of us</span>
+                                    <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">You</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Tek it</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-2/3">
+                    <form class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition shadow-md w-full md:w-auto">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-xl font-bold gradient-text">Hafizh</span>
+                    <p class="mt-2 text-gray-400">Starting making websites since 2024</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="https://github.com/gfizh" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/hafizhhgh/" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">© 2025 Hafizh. All rights reserved.</p>
+                    <p class="text-gray-500 text-sm mt-2">dont stop when youre not done<br></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-500 text-white w-12 h-12 rounded-full shadow-lg hidden items-center justify-center">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('hidden');
+                backToTopBtn.classList.add('flex');
+            } else {
+                backToTopBtn.classList.add('hidden');
+                backToTopBtn.classList.remove('flex');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+
+<script>
+    const starCount = 50;
+    const homeSection = document.getElementById('home');
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        star.style.animationDelay = (Math.random() * 5) + 's';
+        homeSection.appendChild(star);
+    }
+
+// Partikel tambahan (bintang kecil)
+const particleCount = 100;
+for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.top = Math.random() * 100 + 'vh';
+    particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+    particle.style.animationDelay = (Math.random() * 5) + 's';
+    homeSection.appendChild(particle);
+}
+
+</script>
+
+</body>
+</html>
